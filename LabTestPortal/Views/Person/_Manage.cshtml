@@ -1,0 +1,74 @@
+﻿@model PersonModel
+
+<div class="panel panel-default">
+    <div class="panel-heading bold">
+        @if (Model.PersonId > 0)
+        {<h2>Edit&#160;@Html.ValueFor(m => m.FirstName)&#160;@Html.ValueFor(m => m.LastName)</h2> }
+    else
+    { <h2>Add Person</h2>}
+    </div>
+
+    @using (Html.BeginForm("PersonUpsert", "Person", FormMethod.Post, new { id = "personForm" }))
+    {
+        @Html.HiddenFor(m => m.PersonId);
+        @Html.HiddenFor(m => m.PersonSearch.SearchFirstName, new { id = "persist.PersonSearch.SearchFirstName" });
+        @Html.HiddenFor(m => m.PersonSearch.SearchLastName, new { id = "persist.PersonSearch.SearchLastName" });
+        @Html.HiddenFor(m => m.PersonSearch.SearchStateId, new { id = "persist.PersonSearch.SearchStateId" });
+        @Html.HiddenFor(m => m.PersonSearch.SearchGender, new { id = "persist.PersonSearch.SearchGender" });
+        @Html.HiddenFor(m => m.PersonSearch.SearchDob, new { id = "persist.PersonSearch.SearchDob" });
+        <table class="table">
+            <tr>
+                <td>First Name</td>
+                <td>@Html.TextBoxFor(m => m.FirstName, new { id = "firstName", @class = "form-control form-input" })</td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>@Html.TextBoxFor(m => m.LastName, new { id = "lastName", @class = "form-control form-input" })</td>
+            </tr>
+            <tr>
+                <td>State</td>
+                <td>@Html.DropDownListFor(m => m.StateId, new SelectList(Model.States, "StateId", "StateCode"), new { id = "state", @class = "form-control drop-down-list" })</td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td class="text-nowrap">
+                    @Html.RadioButtonFor(m => m.Gender, "F") Female
+                    &#160;&#160;
+                    @Html.RadioButtonFor(m => m.Gender, "M") Male
+                </td>
+            </tr>
+            <tr>
+                <td>Dob</td>
+                <td>@Html.TextBoxFor(m => m.Dob, "{0:MM/dd/yyyy}", new { id = "dob", @class = "form-control form-date" })</td>
+            </tr>
+        </table>
+        <div id="error" class="alert alert-danger" role="alert" style="display:none;">
+            <span id="errorText"></span>
+        </div>
+    }
+</div>
+<script type="text/javascript">
+    function saveChanges() {
+        errorText = "";
+        exclamationHtml = "<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span>";
+
+        if ($("#firstName").val() == "") errorText += exclamationHtml + " Please enter a First Name.<br/>";
+        if ($("#lastName").val() == "") errorText += exclamationHtml + " Please enter a Last Name.<br/>";
+        if ($("#state").val() == "") errorText += exclamationHtml + " Please enter a State.<br/>";
+        if ($("input[name=Gender]:checked").val() == undefined) errorText += exclamationHtml + " Please select a Gender.<br/>";
+        if ($("#dob").val() == "") errorText += exclamationHtml + " Please enter a Dob.<br/>";
+
+        if (errorText != "") {
+            $("#error").show();
+            $("#errorText").html(errorText);
+        }
+        else {
+            $("#persist.PersonSearch.SearchFirstName").val($("#PersonSearch_SearchFirstName").val());
+            $("#persist.PersonSearch.SearchLastName").val($("#PersonSearch_SearchLastName").val());
+            $("#persist.PersonSearch.SearchStateId").val($("#PersonSearch_SearchStateId").val());
+            $("#persist.PersonSearch.SearchGender").val($("#PersonSearch_SearchGender").val());
+            $("#persist.PersonSearch.SearchDob").val($("#PersonSearch_SearchDob").val());
+            $("#personForm").submit();
+        }
+    }
+</script>
