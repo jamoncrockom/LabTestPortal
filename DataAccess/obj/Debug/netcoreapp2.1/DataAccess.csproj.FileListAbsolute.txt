@@ -1,0 +1,9 @@
+C:\Users\0833\source\repos\LabTestPortal\DataAccess\obj\Debug\netcoreapp2.1\DataAccess.csprojAssemblyReference.cache
+C:\Users\0833\source\repos\LabTestPortal\DataAccess\obj\Debug\netcoreapp2.1\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\0833\source\repos\LabTestPortal\DataAccess\obj\Debug\netcoreapp2.1\DataAccess.AssemblyInfoInputs.cache
+C:\Users\0833\source\repos\LabTestPortal\DataAccess\obj\Debug\netcoreapp2.1\DataAccess.AssemblyInfo.cs
+C:\Users\0833\source\repos\LabTestPortal\DataAccess\bin\Debug\netcoreapp2.1\LabTestPortal.DataAccess.deps.json
+C:\Users\0833\source\repos\LabTestPortal\DataAccess\bin\Debug\netcoreapp2.1\LabTestPortal.DataAccess.dll
+C:\Users\0833\source\repos\LabTestPortal\DataAccess\bin\Debug\netcoreapp2.1\LabTestPortal.DataAccess.pdb
+C:\Users\0833\source\repos\LabTestPortal\DataAccess\obj\Debug\netcoreapp2.1\LabTestPortal.DataAccess.dll
+C:\Users\0833\source\repos\LabTestPortal\DataAccess\obj\Debug\netcoreapp2.1\LabTestPortal.DataAccess.pdb
